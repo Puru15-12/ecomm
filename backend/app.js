@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import { connectDatabase } from "./config/dbConnect.js";
 
 dotenv.config({ path: "backend/config/config.env" });
+//parsing
+app.use(express.json());
 
 // Connecting to database
 connectDatabase();
@@ -12,7 +14,6 @@ connectDatabase();
 import productRoutes from "./routes/products.js";
 
 app.use("/api/v1", productRoutes);
-
 app.listen(process.env.PORT, () => {
   console.log(
     `Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`
