@@ -1,7 +1,7 @@
 {
   "name": "ecomm",
-  "type": "module",
   "version": "1.0.0",
+  "type": "module",
   "description": "ECOMM project",
   "main": "app.js",
   "scripts": {
