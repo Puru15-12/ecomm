@@ -12,6 +12,9 @@ process.on("uncaughtException", (err) => {
 });
 
 dotenv.config({ path: "backend/config/config.env" });
+//parsing
+
+app.use(express.json());
 
 // Connecting to database
 connectDatabase();

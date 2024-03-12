@@ -2,14 +2,16 @@ import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import Product from "../models/product.js";
 import ErrorHandler from "../utils/errorHandler.js";
 
-// Create new Product   =>  /api/v1/products
-export const getProducts = catchAsyncErrors(async (req, res) => {
-  const products = await Product.find();
+export const getProducts= async (req ,res) =>{
+    const products= await Product.find();
+    res.status(200).json({
+        message: "Fetched succesfully",
+        products,
+    });
+};
 
-  res.status(200).json({
-    products,
-  });
-});
+export const newProduct= async (req ,res) =>{
+    const product= await Product.create(req.body);
 
 // Create new Product   =>  /api/v1/admin/products
 export const newProduct = catchAsyncErrors(async (req, res) => {
