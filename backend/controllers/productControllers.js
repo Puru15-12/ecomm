@@ -5,13 +5,15 @@ import APIFilters from "../utils/apiFilters.js";
 
 export const getProducts= async (req ,res) =>{
 
-    const apiFilters  = new APIFilters(Product,req.query).search()
+    const apiFilters = new APIFilters(Product, req.query).search().filters();
     
     let products = await apiFilters.query;
+    let filteredProductsCount = products.length;
     
     // const products= await Product.find();
     res.status(200).json({
         message: "Fetched succesfully",
+        filteredProductsCount,
         products,
     });
 }; 
