@@ -27,11 +27,13 @@ import React from "react";
           </div>
         </form>
       </div>
-      <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-        <a href="/cart" style={{textDecoration: "none"}}>
+      <div className="col-12 col-md-3 mt-4 mt-md-0 flex flex-col text-center">
+      
+      <a href="/cart" style={{textDecoration: "none"}}>
           <span id="cart" class="ms-3"> Cart </span>
           <span class="ms-1" id="cart_count">0</span>
         </a>
+        
 
         <div className="ms-4 dropdown">
           <button
@@ -60,8 +62,8 @@ import React from "react";
             <a className="dropdown-item text-danger" href="/"> Logout </a>
           </div>
         </div>
-
         <a href="/login" className="btn ms-4" id="login_btn"> Login </a>
+        
       </div>
     </nav>
 
