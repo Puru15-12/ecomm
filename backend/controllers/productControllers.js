@@ -10,9 +10,9 @@ export const getProducts= async (req ,res) =>{
     });
 };
 
-export const newProduct= async (req ,res) =>{
-    const product= await Product.create(req.body);
-
+// export const newProduct= async (req ,res) =>{
+//     const product= await Product.create(req.body);
+// }
 // Create new Product   =>  /api/v1/admin/products
 export const newProduct = catchAsyncErrors(async (req, res) => {
   const product = await Product.create(req.body);
@@ -21,6 +21,7 @@ export const newProduct = catchAsyncErrors(async (req, res) => {
     product,
   });
 });
+
 
 // Get single product details   =>  /api/v1/products/:id
 export const getProductDetails = catchAsyncErrors(async (req, res, next) => {
