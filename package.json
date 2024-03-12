@@ -1,7 +1,11 @@
 {
   "name": "ecomm",
+<<<<<<< HEAD
   "type":"module",
+=======
+>>>>>>> d334b68bc03c1de48afa7409213f907728454133
   "version": "1.0.0",
+  "type": "module",
   "description": "ECOMM project",
   "main": "app.js",
   "dependencies": {
@@ -116,7 +120,15 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/app.js",
+    "dev": "SET NODE_ENV=DEVELOPMENT & nodemon backend/app.js",
+    "prod": "SET NODE_ENV=PRODUCTION & nodemon backend/app.js",
+    "seeder" : "node backend/seeder/seeder.js"
+>>>>>>> d334b68bc03c1de48afa7409213f907728454133
   },
   "author": "",
   "license": "ISC"
