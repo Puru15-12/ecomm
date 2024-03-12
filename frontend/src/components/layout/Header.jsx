@@ -7,7 +7,7 @@ import React from "react";
           <a href="/">
             <img src="/images/shopit_logo.png" alt="ShopIT Logo" />
           </a>
-        </div>
+        </div> 
       </div>
       <div className="col-12 col-md-6 mt-2 mt-md-0">
         <form action="your_search_action_url_here" method="get">
