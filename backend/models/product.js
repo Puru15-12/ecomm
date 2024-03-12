@@ -38,8 +38,8 @@ const productSchema = new mongoose.Schema({
                 "Electronics",
                 "Cameras",
                 "Laptops",
-                "accessories",
-                "Headphone",
+                "Accessories",
+                "Headphones",
                 "Food",
                 "Books",
                 "Sports",
@@ -81,10 +81,10 @@ const productSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required: true,
+        required: false,
     },
 } ,
     {timestamps: true}
 );
 
-export default mongoose.model("Product" ,productSchema);
+export default mongoose.model("product" ,productSchema);
