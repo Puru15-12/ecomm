@@ -65,7 +65,7 @@ import React from "react";
       </div>
     </nav>
 
-    )
- }
+    );
+ };
 
  export default Header;
