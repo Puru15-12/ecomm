@@ -47,7 +47,7 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
   //   token,
   // });
 
-  sendToken(user ,201 ,res);
+  sendToken(user ,200 ,res);
 });
 
 // Logout user   =>  /api/v1/logout
@@ -62,50 +62,44 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Forgot Password  =>  /api/v1/password/forgot
+// Get current user profile  =>  /api/v1/me
+export const getUserProfile = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req?.user?._id);
 
-export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
-  
-  // Find user in the database
-  const user= await User.findOne({ email:req.body.email});
-  if(!user)
+  res.status(200).json({
+    user,
+  });
+});
+
+// Update password  => api/v1/update 
+export const updatePassword = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req?.user?._id).select("+password");
+
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+  if(!isPasswordMatched)
   {
-    return next(new ErrorHandler("User not found with this email" ,404));
+    return next(new ErrorHandler("Old Password is incorrect" ,400));
   }
 
-  // get reset password token
-  const resetToken = user.getResetPasswordToken();
+  user.password=req.body.password;
+  user.save();
 
-  //console.log(resetToken);
-  await user.save();
+  res.status(200).json({
+    success: true,
+  });
+});
 
+// Update User Profile(like name and email)  => api/v1/me/update
+export const updateProfile = catchAsyncErrors(async (req, res, next) => {
 
-
-
-  // creat reset password Url
-  const resetUrl = `${process.env.FRONTEND_URL}/api/v1/password/reset/${resetToken}`;
-
-  const message = getResetPasswordTemplate(user?.name, resetUrl);
-
-  try {
-    await sendEmail({
-      email:user.email,
-      subject: "ecomm Password Recovery",
-      message,
-    });
-
-    res.status(200).json({
-      message: `Email sent to ${user.email}`,
-    });
-  } 
-  catch (error) {
-    console.log(error);
-    user.resetPasswordToken=undefined;
-    user.resetPasswordExpire=undefined;
-
-    await user.save();
-
-    return next(new ErrorHandler(error?.message , 500));
-
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
   }
+
+  const user = await User.findByIdAndUpdate(req.user._id ,newUserData ,{new : true});
+  res.status(200).json({
+    user,
+  });
 });
