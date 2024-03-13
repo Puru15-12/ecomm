@@ -22,9 +22,6 @@ export const getProducts= async (req ,res) =>{
     });
 }; 
 
-// export const newProduct= async (req ,res) =>{
-//     const product= await Product.create(req.body);
-// }
 // Create new Product   =>  /api/v1/admin/products
 export const newProduct = catchAsyncErrors(async (req, res) => {
   const product = await Product.create(req.body);
