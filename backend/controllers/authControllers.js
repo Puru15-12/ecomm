@@ -2,7 +2,9 @@ import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import User from "../models/user.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import sendToken from "../utils/sendToken.js";
-
+import sendEmail from "../utils/sendEmail.js"
+import { getResetPasswordTemplate } from "../utils/emailTemplates.js";
+import crypto from "crypto";
 
 // Register user   =>  /api/v1/register
 export const registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -55,7 +57,55 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
     httpOnly: true,
   });
 
-  res.status(200).json({
+  res.status(201).json({
     message: "Logged Out",
   });
+});
+
+// Forgot Password  =>  /api/v1/password/forgot
+
+export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
+  
+  // Find user in the database
+  const user= await User.findOne({ email:req.body.email});
+  if(!user)
+  {
+    return next(new ErrorHandler("User not found with this email" ,404));
+  }
+
+  // get reset password token
+  const resetToken = user.getResetPasswordToken();
+
+  //console.log(resetToken);
+  await user.save();
+
+
+
+
+  // creat reset password Url
+  const resetUrl = `${process.env.FRONTEND_URL}/api/v1/password/reset/${resetToken}`;
+
+  const message = getResetPasswordTemplate(user?.name, resetUrl);
+
+  try {
+    await sendEmail({
+      email:user.email,
+      subject: "ecomm Password Recovery",
+      message,
+    });
+
+    res.status(200).json({
+      message: `Email sent to ${user.email}`,
+    });
+  } 
+  catch (error) {
+    console.log(error);
+    user.resetPasswordToken=undefined;
+    user.resetPasswordExpire=undefined;
+
+    await user.save();
+
+    return next(new ErrorHandler(error?.message , 500));
+
+  }
 });
