@@ -47,3 +47,4 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user ,201 ,res);
 });
+
