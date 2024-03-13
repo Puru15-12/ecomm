@@ -45,7 +45,7 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
   //   token,
   // });
 
-  sendToken(user ,201 ,res);
+  sendToken(user ,200 ,res);
 });
 
 // Logout user   =>  /api/v1/logout
@@ -57,5 +57,14 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     message: "Logged Out",
+  });
+});
+
+// Get current user profile  =>  /api/v1/me
+export const getUserProfile = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req?.user?._id);
+
+  res.status(200).json({
+    user,
   });
 });
