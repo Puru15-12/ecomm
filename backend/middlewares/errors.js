@@ -17,8 +17,7 @@ export default (err, req, res, next) => {
     const message = Object.values(err.errors).map((value) => value.message);
     error = new ErrorHandler(message, 400);
   }
-
-  if (process.env.NODE_ENV === "DEVELOPMENT") {
+  if (process.env.NODE_ENV.includes('DEVELOPMENT')) {
     res.status(error.statusCode).json({
       message: error.message,
       error: err,
@@ -26,7 +25,7 @@ export default (err, req, res, next) => {
     });
   }
 
-  if (process.env.NODE_ENV === "PRODUCTION") {
+  if (process.env.NODE_ENV.includes('PRODUCTION')) {
     res.status(error.statusCode).json({
       message: error.message,
     });
