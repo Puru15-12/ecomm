@@ -2,7 +2,9 @@ import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import User from "../models/user.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import sendToken from "../utils/sendToken.js";
-
+import sendEmail from "../utils/sendEmail.js"
+import { getResetPasswordTemplate } from "../utils/emailTemplates.js";
+import crypto from "crypto";
 
 // Register user   =>  /api/v1/register
 export const registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -55,7 +57,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
     httpOnly: true,
   });
 
-  res.status(200).json({
+  res.status(201).json({
     message: "Logged Out",
   });
 });
@@ -99,68 +101,5 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user._id ,newUserData ,{new : true});
   res.status(200).json({
     user,
-  });
-});
-
-// Get All Users-> ADMIN => api/v1/admin/users
-
-export const getAllUsers = catchAsyncErrors(async (req, res, next) => {
-
-  const users = await User.find();
-  res.status(200).json({
-    users,
-  });
-});
-
-
-// Get User Details -> ADMIN => api/v1/admin/users
-
-export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
-
-  const user = await User.findById(req.params.id);
-
-  if(!user)
-  {
-    return next(new ErrorHandler(`User not found with id :{$ req.params.id}` ,404));
-  }
-  res.status(200).json({
-    user,
-  });
-});
-
-
-// Update User Details - ADMIN  =>  /api/v1/admin/users/:id
-export const updateUser = catchAsyncErrors(async (req, res, next) => {
-  const newUserData = {
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role,
-  };
-
-  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
-    new: true,
-  });
-
-  res.status(200).json({
-    user,
-  });
-});
-
-// Delete User - ADMIN  =>  /api/v1/admin/users/:id
-export const deleteUser = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
-
-  if (!user) {
-    return next(
-      new ErrorHandler(`User not found with id: ${req.params.id}`, 404)
-    );
-  }
-
-  // TODO - Remove user avatar from cloudinary
-
-  await user.deleteOne();
-
-  res.status(200).json({
-    success: true,
   });
 });

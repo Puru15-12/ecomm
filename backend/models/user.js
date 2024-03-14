@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    resetPasswordToken : String,
+    resetPasswordToken :String,
     resetPasswordExpire :Date,
   },
   { timestamps: true }
@@ -55,9 +55,9 @@ userSchema.methods.comparePassword = async function (password_entered)
 };
 
 // Generate Password reset Token 
-userSchema.method.getResetPasswordToken = function(){
+userSchema.methods.getResetPasswordToken = function(){
   // Generate token
-  const resetToken = crypto.randomBytes(20).toString("hex")
+  const resetToken = crypto.randomBytes(20).toString("hex");
 
   // hash and set resetPasswordToken field
   this.resetPasswordToken = crypto
@@ -66,7 +66,7 @@ userSchema.method.getResetPasswordToken = function(){
   .digest("hex");
 
   // set token expire time
-  this.resetPasswordExpire = Date.now() +30*60*1000;
+  this.resetPasswordExpire = new Date(Date.now() +(30*60*1000));
 
   return resetToken;
 

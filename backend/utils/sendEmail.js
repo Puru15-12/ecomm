@@ -7,13 +7,13 @@ const sendEmail = async (options) =>{
       auth: {
         user: process.env.SMTP_EMAIL,
         pass: process.env.SMTP_PASSWORD
-      }
+      },
     });
 
     const message = {
       from : `${process.env.SMTP_FROM_NAME} <${process.env.SMTP_FROM_EMAIL}>`,
       to:options.email,
-      sunject :options.subject,
+      subject :options.subject,
       html:options.message,
 
     };
