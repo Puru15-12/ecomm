@@ -2,6 +2,7 @@ import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import Product from "../models/product.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import APIFilters from "../utils/apiFilters.js";
+import product from "../models/product.js";
 
 export const getProducts= async (req ,res) =>{
     const resPerPage = 4;
@@ -121,5 +122,50 @@ export const createProductReview = catchAsyncErrors(async (req, res,next) => {
 
   res.status(200).json({
     success : true,
+  });
+});
+
+// Get product reviews   =>  /api/v1/reviews
+export const getProductReview = catchAsyncErrors(async (req, res, next) => {
+  const product = await Product.findById(req.query.id);
+
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
+  res.status(200).json({
+    reviews: product.reviews,
+  });
+});
+
+// Delete product review   =>  /api/v1/admin/reviews
+export const deleteReview = catchAsyncErrors(async (req, res, next) => {
+  let product = await Product.findById(req.query.productId);
+
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
+  const reviews = product?.reviews?.filter(
+    (review) => review._id.toString() !== req?.query?.id.toString()
+  );
+
+  const numOfReviews = reviews.length;
+
+  const ratings =
+    numOfReviews === 0
+      ? 0
+      : product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+        numOfReviews;
+
+  product = await Product.findByIdAndUpdate(
+    req.query.productId,
+    { reviews, numOfReviews, ratings },
+    { new: true }
+  );
+
+  res.status(200).json({
+    success: true,
+    product,
   });
 });

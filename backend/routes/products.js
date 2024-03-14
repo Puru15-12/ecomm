@@ -4,7 +4,9 @@ import { getProducts ,
         getProductDetails,
         updateProduct,
         deleteProduct,
-        createProductReview}
+        createProductReview,
+        getProductReview,
+        deleteReview}
         from "../controllers/productControllers.js";
 import { authorizeRoles,isAuthenticatedUser } from "../middlewares/auth.js";
 
@@ -32,7 +34,11 @@ router
 
 router
     .route("/reviews")
+    .get(isAuthenticatedUser,getProductReview)
     .put(isAuthenticatedUser,createProductReview);
 
+router
+  .route("/admin/reviews")
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteReview);
 
 export default router;
