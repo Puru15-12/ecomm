@@ -29,7 +29,8 @@ import orderRoutes from "./routes/order.js";
 
 app.use("/api/v1/", productRoutes);
 app.use("/api/v1/", authRoutes);
-app.use("/api/v1/" ,orderRoutes);
+app.use("/api/v1", orderRoutes);
+
 // Using error middleware
 app.use(errorMiddleware);
 

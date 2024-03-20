@@ -37,14 +37,15 @@ export default (err, req, res, next) => {
   }
   
   if (process.env.NODE_ENV.includes("DEVELOPMENT")) {
+
     res.status(error.statusCode).json({
       message: error.message,
       error: err,
       stack: err?.stack,
     });
   }
-
   if (process.env.NODE_ENV.includes("PRODUCTION")) {
+
     res.status(error.statusCode).json({
       message: error.message,
     });
