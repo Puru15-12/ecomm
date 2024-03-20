@@ -7,4 +7,4 @@ export default class ErrorHandler extends Error { // Update export
     Error.captureStackTrace(this, this.constructor);
   }
 }
-// export default ErrorHandler;
+
