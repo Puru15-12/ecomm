@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate , useSearchParams } from "react-router-dom";
 import { getPrriceQueryParams } from '../../helpers/helpers';
 import { PRODUCT_CATEGORIES } from "../../constants/constants";
+import StarRatings from 'react-star-ratings';
 
 const Filters = () => {
 
@@ -60,8 +61,7 @@ const Filters = () => {
     navigate(path);
   };
 
-  const defaultCheckHandler
-   = (checkboxType, checkboxValue) => {
+  const defaultCheckHandler = (checkboxType, checkboxValue) => {
     const value = searchParams.get(checkboxType);
     if (checkboxValue === value) return true;
     return false;
@@ -128,33 +128,32 @@ const Filters = () => {
       <hr />
       <h5 className="mb-3">Ratings</h5>
 
-      <div className="form-check">
+      {[5,4,3,2,1].map((rating) => (
+        <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
           name="ratings"
           id="check7"
-          value="5"
+          value={rating}
+          onClick={(e) => HandleClick(e.target)}
+          defaultChecked={defaultCheckHandler("rating", rating?.toString())}
+
         />
         <label className="form-check-label" for="check7">
-          <span className="star-rating">★ ★ ★ ★ ★</span>
+        <StarRatings
+              rating={rating}
+              starRatedColor="#ffb829"
+              numberOfStars={5}
+              name='rating'
+              starDimension='21px'
+              starSpacing='1px'
+              />
         </label>
       </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="ratings"
-          id="check8"
-          value="4"
-        />
-        <label className="form-check-label" for="check8">
-          <span className="star-rating">★ ★ ★ ★ ☆</span>
-        </label>
-      </div>
-    </div>
-
-  )
-}
+      ))};
+  </div> 
+  );
+};
 
 export default Filters
