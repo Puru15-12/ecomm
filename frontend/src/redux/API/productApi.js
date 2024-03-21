@@ -10,6 +10,8 @@ export const productApi = createApi({
             }),
         }),
     }),
+    // time for which fetch data is stored in cache(reduc toolkit) in RTK query
+    // keepUnusedDataFor:45 by default it is 60 sec
 
 });
 
