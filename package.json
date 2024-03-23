@@ -112,6 +112,8 @@
     "webidl-conversions": "^7.0.0",
     "whatwg-url": "^13.0.0",
     "yallist": "^4.0.0",
+
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "crypto-js": "^4.2.0",
@@ -131,6 +133,10 @@
 
   },
   "author": "",
+  "license": "ISC",
+  "seeder": "node backend/seeder/seeder.js",
+  "author": "",
+
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.0"
