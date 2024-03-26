@@ -11,6 +11,7 @@ import Header from "./components/layout/Header";
 import { Toaster } from "react-hot-toast";
 import ProductDetails from "./components/product/ProductDetails.jsx";
 import Profile from "./components/user/Profile.jsx";
+import UpdateProfile from "./components/user/UpdateProfile.jsx";
 
 function App() {
   return (
@@ -31,6 +32,13 @@ function App() {
               path="/me/profile"
               element={
                   <Profile />
+              }
+            />
+
+            <Route
+              path="/me/update_profile"
+              element={
+                  <UpdateProfile />
               }
             />
 
