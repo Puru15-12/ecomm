@@ -12,6 +12,7 @@ import { Toaster } from "react-hot-toast";
 import ProductDetails from "./components/product/ProductDetails.jsx";
 import Profile from "./components/user/Profile.jsx";
 import UpdateProfile from "./components/user/UpdateProfile.jsx";
+import ProtectedRoute from "./components/auth/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -31,14 +32,19 @@ function App() {
             <Route
               path="/me/profile"
               element={
+                <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
               }
             />
 
             <Route
               path="/me/update_profile"
               element={
+                <ProtectedRoute>
                   <UpdateProfile />
+                </ProtectedRoute>
+                  
               }
             />
 
