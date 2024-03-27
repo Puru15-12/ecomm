@@ -11,7 +11,7 @@ import { registerUser ,
       allUsers,
       getUserDetails,
       updateUser,
-      deleteUser}
+      deleteUser, uploadAvatar}
       from "../controllers/authControllers.js";
 import { isAuthenticatedUser ,authorizeRoles} from "../middlewares/auth.js";
 
@@ -28,6 +28,8 @@ router.route("/me").get( isAuthenticatedUser ,getUserProfile);
 router.route("/me/update").put( isAuthenticatedUser ,updateProfile);
 
 router.route("/password/update").put(isAuthenticatedUser , updatePassword);
+router.route("/me/upload_avatar").put(isAuthenticatedUser, uploadAvatar);
+
 
 router
       .route("/admin/users")
