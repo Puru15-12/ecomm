@@ -17,7 +17,9 @@ import UploadAvatar from "./components/user/UploadAvatar.jsx";
 import UpdatePassword from "./components/user/UpdatePassword.jsx";
 import ForgotPassword from "./components/auth/ForgotPassword.jsx";
 import ResetPassword from "./components/auth/ResetPassword";
-import Cart from "./components/cart/Cart.jsx";
+import Cart from "./components/cart/cart.jsx";
+import ShippingInfo from "./components/cart/Shipping.jsx";
+import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
 
 function App() {
   return (
@@ -72,7 +74,21 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shipping" 
+              element={
+                <ProtectedRoute>
+                  <ShippingInfo />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/confirm_order"
+              element={
+                <ProtectedRoute>
+                  <ConfirmOrder />
+                </ProtectedRoute>
+              }
+              />
           </Routes>
 
        
