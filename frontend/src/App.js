@@ -20,7 +20,10 @@ import ResetPassword from "./components/auth/ResetPassword";
 import Cart from "./components/cart/cart.jsx";
 import ShippingInfo from "./components/cart/Shipping.jsx";
 import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
-
+import PaymentMethod from "./components/cart/PaymentMethod.jsx";
+import MyOrders from "./components/order/MyOrders.jsx";
+import OrderDetails from "./components/order/OrderDetails.jsx";
+import Invoice from "./components/invoice/Invoice.jsx";
 function App() {
   return (
     <Router>
@@ -88,11 +91,38 @@ function App() {
                   <ConfirmOrder />
                 </ProtectedRoute>
               }
-              />
+            />
+            <Route path="/payment_method"
+              element={
+                <ProtectedRoute>
+                  <PaymentMethod />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/me/orders"
+              element={
+                <ProtectedRoute>
+                  <MyOrders />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/me/order/:id"
+              element={
+                <ProtectedRoute>
+                  <OrderDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/invoice/order/:id"
+              element={
+                <ProtectedRoute>
+                  <Invoice />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
-
-       
-        
         </div>
 
         <Footer />
