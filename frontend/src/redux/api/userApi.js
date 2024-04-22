@@ -1,3 +1,4 @@
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setIsAuthenticated, setLoading, setUser } from "../features/userSlice";
 
@@ -69,7 +70,7 @@ export const userApi = createApi({
         };
       },
     }),
-  })
+  }),
 });
 
 export const {
@@ -78,5 +79,5 @@ export const {
   useUploadAvatarMutation,
   useUpdatePasswordMutation,
   useForgotPasswordMutation,
-  useResetPasswordMutation
+  useResetPasswordMutation,
 } = userApi;

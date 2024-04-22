@@ -17,6 +17,8 @@ const PaymentMethod = () => {
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
 
+  const [createNewOrder, { error, isSuccess }] = useCreateNewOrderMutation();
+
   const [
     stripeCheckoutSession,
     { data: checkoutData, error: checkoutError, isLoading },
@@ -32,7 +34,6 @@ const PaymentMethod = () => {
     }
   }, [checkoutData, checkoutError]);
 
-  const [createNewOrder, { error, isSuccess }] = useCreateNewOrderMutation();
   useEffect(() => {
     if (error) {
       toast.error(error?.data?.message);
