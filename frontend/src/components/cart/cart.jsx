@@ -7,6 +7,7 @@ import { setCartItem, removeCartItem } from "../../redux/features/cartSlice";
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { cartItems } = useSelector((state) => state.cart);
 
   const increseQty = (item, quantity) => {
@@ -143,7 +144,11 @@ const Cart = () => {
                   </span>
                 </p>
                 <hr />
-                <button id="checkout_btn" className="btn btn-primary w-100" onClick={checkoutHandler}>
+                <button
+                  id="checkout_btn"
+                  className="btn btn-primary w-100"
+                  onClick={checkoutHandler}
+                >
                   Check out
                 </button>
               </div>
