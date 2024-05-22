@@ -9,6 +9,7 @@ import { setCartItem } from "../../redux/features/cartSlice";
 import MetaData from "../layout/MetaData";
 import NewReview from "../reviews/NewReview";
 import ListReviews from "../reviews/ListReviews";
+import NotFound from "../layout/NotFound";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -72,6 +73,11 @@ const ProductDetails = () => {
 
   if (isLoading) return <Loader />;
 
+
+  if( error && error?.status == 404){
+     return <NotFound />
+  }
+  
   return (
     <>
       <MetaData title={product?.name} />
