@@ -2,7 +2,9 @@ import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home.jsx";
+// import Home from "./components/Home.jsx";
+// import screen from "./components/screen.jsx";
+import HomePage from "./components/HomePage.jsx";
 import Login from "./components/auth/login.jsx"
 import Register from "./components/auth/register.jsx"
 
@@ -30,10 +32,9 @@ function App() {
       <div className="App">
         <Toaster position="top-center" />
         <Header />
-
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
 
             <Route path="/login" element={<Login />} />

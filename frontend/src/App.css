@@ -11,7 +11,7 @@ body {
 /* Scroll Bar */
 
 ::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
+  background-color: #edd4d4;
 }
 
 ::-webkit-scrollbar {
@@ -27,12 +27,14 @@ body {
 }
 
 nav {
-  background-color: #232f3e;
+  background-color: rgb(90, 157, 146);
   padding: 1rem 1rem;
+  height: fit-content;
 }
 
 .navbar {
   padding: 0.1rem 1rem;
+  height: fit-content;
 }
 
 .dropdown {
@@ -42,7 +44,7 @@ nav {
 }
 
 #search_btn {
-  background-color: #febd69;
+  background-color: #c7b399;
 }
 
 .input-group {
@@ -58,7 +60,7 @@ nav {
 #login_btn,
 #view_btn,
 #new_review_btn {
-  background-color: #fa9c23;
+  background-color: #0e353a;
   padding: 0.4rem 1.8rem;
   color: white;
 }
@@ -69,7 +71,7 @@ nav {
 }
 
 #cart_count {
-  background-color: #febd69;
+  background-color: #baa07f;
   padding: 0.2rem 0.5rem;
   border-radius: 0.2rem;
   color: black;
@@ -92,7 +94,7 @@ nav {
 }
 
 .card-title a:hover {
-  color: #fa9c23;
+  color: #7bdacf;
   text-decoration: none;
 }
 
@@ -111,7 +113,7 @@ nav {
 
 .ratings {
   font-size: 1.2rem;
-  color: #fdcc0d;
+  color: #e5d9a7;
 }
 
 #no_of_reviews {
@@ -128,7 +130,7 @@ nav {
 /* Footer */
 footer {
   margin-top: auto;
-  color: grey;
+  color: black;
   bottom: 0;
   width: 100%;
 }
@@ -147,7 +149,7 @@ footer {
 #cart_btn,
 #review_btn {
   border-radius: 2rem;
-  background-color: #fa9c23;
+  background-color: #0e353a;
   border: none;
   padding: 0.5rem 2rem;
 }
@@ -192,8 +194,8 @@ footer {
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #fa9c23;
-  border-color: #fa9c23 transparent;
+  border: 6px solid #0e353a;
+  border-color: #0e353a transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -213,7 +215,7 @@ footer {
 }
 
 .cart-item a {
-  color: grey;
+  color: black;
 }
 
 #delete_cart_item {
@@ -225,22 +227,22 @@ footer {
 }
 
 #card_item_price {
-  color: #febd69;
+  color: #0e353a;
   font-weight: bold;
   font-size: 1.4rem;
 }
 
 #checkout_btn,
 .review-btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
   margin-top: 2rem;
   border-radius: 5rem;
 }
 
 #view_order_details {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #7bdacf;
+  border-color: #7bdacf;
 }
 
 #order_summary {
@@ -293,14 +295,14 @@ footer {
 
 .wrapper form .btn,
 .fetch-btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
   color: white;
   margin-top: 1rem;
 }
 
 .fetch-btn:hover {
-  background-color: #fa9c23;
+  background-color: #0e353a;
   color: white;
 }
 
@@ -378,7 +380,7 @@ footer {
 }
 
 .active-step {
-  background: #fa9c23;
+  background: #0e353a;
   color: #fff;
 }
 
@@ -386,7 +388,7 @@ footer {
   float: left;
   width: 0;
   border-top: 20px solid transparent;
-  border-left: 15px solid #fa9c23;
+  border-left: 15px solid #0e353a;
   border-bottom: 20px solid transparent;
   margin-left: -1px;
 }
@@ -394,9 +396,9 @@ footer {
 .triangle2-active {
   width: 0;
   float: left;
-  border-top: 20px solid #fa9c23;
+  border-top: 20px solid #0e353a;
   border-left: 15px solid #fff;
-  border-bottom: 20px solid #fa9c23;
+  border-bottom: 20px solid #0e353a;
   margin-right: -1px;
 }
 
@@ -436,8 +438,8 @@ footer {
 }
 
 #edit_profile {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
 }
 
 /* Confirm Order */
@@ -449,8 +451,8 @@ footer {
 
 .update-btn,
 #create_btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
   color: white;
 }
 
@@ -460,16 +462,16 @@ footer {
 
 /* Pagination */
 .page-item.active .page-link {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
 }
 
 .page-link {
-  color: #fa9c23;
+  color: #0e353a;
 }
 
 .page-link:hover {
-  color: #fa9c23;
+  color: #0e353a;
 }
 
 /* Products List Admin */
@@ -538,8 +540,8 @@ footer {
 }
 
 #filter_form button {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #0e353a;
+  border-color: #0e353a;
 }
 
 .filter {
@@ -561,5 +563,5 @@ footer {
   background-color: #f3f4f6;
   border-color: #f3f4f6;
   border-radius: 0.3rem;
-  color: #fa9c23;
+  color: #0e353a;
 }
