@@ -1,0 +1,24 @@
+.home-page {
+    overflow: hidden;
+}
+
+.home-page .landing-page,
+.home-page .dashboard {
+    transition: transform 0.5s ease;
+}
+
+.home-page .landing-page {
+    transform: translateY(0);
+}
+
+.home-page .dashboard {
+    transform: translateY(100%);
+}
+
+.home-page.show-dashboard .landing-page {
+    transform: translateY(-100%);
+}
+
+.home-page.show-dashboard .dashboard {
+    transform: translateY(0);
+}

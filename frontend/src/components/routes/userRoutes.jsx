@@ -19,12 +19,12 @@ import PaymentMethod from "../cart/PaymentMethod";
 import MyOrders from "../order/MyOrders";
 import OrderDetails from "../order/OrderDetails";
 import Invoice from "../invoice/Invoice";
-import Home from "../Home";
+import HomePage from "../HomePage";
 
 const userRoutes = () => {
   return (
     <>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

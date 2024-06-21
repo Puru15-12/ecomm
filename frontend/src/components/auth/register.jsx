@@ -14,10 +14,10 @@ const Register = () => {
   const { name, email, password } = user;
 
 
-  const [register, { isLoading, error, data }] = useRegisterMutation();
+  const [register, { isLoading, error, isError }] = useRegisterMutation();
 
   useEffect(() => {
-    if (error) {
+    if (isError) {
         console.log(error);
       toast.error(error.data.message);
     }

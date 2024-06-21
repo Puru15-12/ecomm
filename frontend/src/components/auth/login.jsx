@@ -10,14 +10,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const [login, { isLoading, error, data }] = useLoginMutation();
+  const [login, { isLoading, error, isError }] = useLoginMutation();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
     }
-    if (error) {
+    if (isError) {
       toast.error(error?.data?.message);
     }
   }, [error, isAuthenticated]);
@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <>
-    <MetaData title={"Login"} />
+    <MetaData title={"Login page"} />
     <div className="row wrapper">
       <div className="col-10 col-lg-5">
         <form className="shadow rounded bg-body" onSubmit={submitHandler}>

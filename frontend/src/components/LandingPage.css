@@ -1,0 +1,19 @@
+.landing-page {
+    height: 100vh;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.landing-page .content img {
+    max-width: 80%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.landing-page h1, .landing-page p {
+    color: #004d40;
+}

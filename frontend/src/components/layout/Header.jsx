@@ -21,11 +21,11 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar row">
+    <nav className="navbar row fixed-top bg-brown shadow-sm">
       <div className="col-12 col-md-3 ps-5">
         <div className="navbar-brand">
           <a href="/">
-            <img src="/images/shopit_logo.png" alt="ShopIT Logo" />
+            <img src="/images/logo.jpeg" alt="EcoHub Logo" />
           </a>
         </div>
       </div>
