@@ -1,5 +1,7 @@
+
 import "./App.css";
 
+<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import Home from "./components/Home.jsx";
@@ -7,26 +9,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage.jsx";
 import Login from "./components/auth/login.jsx"
 import Register from "./components/auth/register.jsx"
+=======
+import { BrowserRouter as Router, Routes } from "react-router-dom";
+>>>>>>> 7fea33ab0bad21dcebc9a24714deb714979fff41
 
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import { Toaster } from "react-hot-toast";
-import ProductDetails from "./components/product/ProductDetails.jsx";
-import Profile from "./components/user/Profile.jsx";
-import UpdateProfile from "./components/user/UpdateProfile.jsx";
-import ProtectedRoute from "./components/auth/ProtectedRoute.jsx";
-import UploadAvatar from "./components/user/UploadAvatar.jsx";
-import UpdatePassword from "./components/user/UpdatePassword.jsx";
-import ForgotPassword from "./components/auth/ForgotPassword.jsx";
-import ResetPassword from "./components/auth/ResetPassword";
-import Cart from "./components/cart/cart.jsx";
-import ShippingInfo from "./components/cart/Shipping.jsx";
-import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
-import PaymentMethod from "./components/cart/PaymentMethod.jsx";
-import MyOrders from "./components/order/MyOrders.jsx";
-import OrderDetails from "./components/order/OrderDetails.jsx";
-import Invoice from "./components/invoice/Invoice.jsx";
+
+import useUserRoutes from "./components/routes/userRoutes";
+import useAdminRoutes from "./components/routes/adminRoutes";
+
 function App() {
+  const userRoutes = useUserRoutes();
+  const adminRoutes = useAdminRoutes();
+
   return (
     <Router>
       <div className="App">
@@ -34,6 +31,7 @@ function App() {
         <Header />
         <div className="container">
           <Routes>
+<<<<<<< HEAD
             <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
 
@@ -123,6 +121,10 @@ function App() {
                 </ProtectedRoute>
               }
             />
+=======
+            {userRoutes}
+            {adminRoutes}
+>>>>>>> 7fea33ab0bad21dcebc9a24714deb714979fff41
           </Routes>
         </div>
 

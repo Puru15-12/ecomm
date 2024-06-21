@@ -6,21 +6,21 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/api/v1" }),
   endpoints: (builder) => ({
     register: builder.mutation({
-        query(body) {
-          return {
-            url: "/register",
-            method: "POST",
-            body,
-          };
-        },
-        async onQueryStarted(args, { dispatch, queryFulfilled }) {
-          try {
-            await queryFulfilled;
-            await dispatch(userApi.endpoints.getMe.initiate(null));
-          } catch (error) {
-            console.log(error);
-          }
+      query(body) {
+        return {
+          url: "/register",
+          method: "POST",
+          body,
+        };
+      },
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          await dispatch(userApi.endpoints.getMe.initiate(null));
+        } catch (error) {
+          console.log(error);
         }
+      },
     }),
     login: builder.mutation({
       query(body) {
@@ -38,13 +38,12 @@ export const authApi = createApi({
           console.log(error);
         }
       },
-      }),
-      logout: builder.query({
-        query: () => "/logout",
-      })
-    })
+    }),
+    logout: builder.query({
+      query: () => "/logout",
+    }),
+  }),
 });
-
 
 export const { useLoginMutation, useRegisterMutation, useLazyLogoutQuery } =
   authApi;
