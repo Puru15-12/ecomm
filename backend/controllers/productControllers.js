@@ -39,14 +39,15 @@ export const getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req?.params?.id).populate(
     "reviews.user"
   );
-
+  
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
-
+  
   res.status(200).json({
     product,
   });
+  
 });
 
 // Get products - ADMIN   =>  /api/v1/admin/products

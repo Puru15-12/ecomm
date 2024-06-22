@@ -23,8 +23,8 @@ const ProductDetails = () => {
   const { data, isLoading, error, isError } = useGetProductDetailsQuery(
     params?.id
   );
+  // console.log(data);
   const product = data?.product;
-
   useEffect(() => {
     setActiveImg(
       product?.images[0]
@@ -62,11 +62,11 @@ const ProductDetails = () => {
       product: product?._id,
       name: product?.name,
       price: product?.price,
+      carbon: product?.carbon,
       image: product?.images[0]?.url,
       stock: product?.stock,
       quantity,
     };
-
     dispatch(setCartItem(cartItem));
     toast.success("Item added to Cart");
   };
@@ -175,6 +175,10 @@ const ProductDetails = () => {
 
           <h4 className="mt-2">Description:</h4>
           <p>{product?.description}</p>
+          <hr />
+          <p>
+            Carbon Footprint: <strong>{product?.carbon}kg</strong>
+          </p>
           <hr />
           <p id="product_seller mb-3">
             Sold by: <strong>{product?.seller}</strong>
