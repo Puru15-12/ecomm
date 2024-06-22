@@ -21,12 +21,13 @@ const UpdateProduct = () => {
     name: "",
     description: "",
     price: "",
+    carbon: "",
     category: "",
     stock: "",
     seller: "",
   });
 
-  const { name, description, price, category, stock, seller } = product;
+  const { name, description, price, carbon, category, stock, seller } = product;
 
   const [updateProduct, { isLoading, error, isSuccess }] =
     useUpdateProductMutation();
@@ -39,6 +40,7 @@ const UpdateProduct = () => {
         name: data?.product?.name,
         description: data?.product?.description,
         price: data?.product?.price,
+        carbon: data?.product?.carbon,
         category: data?.product?.category,
         stock: data?.product?.stock,
         seller: data?.product?.seller,
@@ -117,19 +119,20 @@ const UpdateProduct = () => {
               </div>
 
               <div className="mb-3 col">
-                <label htmlFor="stock_field" className="form-label">
+                <label htmlFor="carbon_field" className="form-label">
                   {" "}
-                  Stock{" "}
+                  Carbon Footprint{" "}
                 </label>
                 <input
-                  type="number"
-                  id="stock_field"
+                  type="text"
+                  id="carbon_field"
                   className="form-control"
-                  name="stock"
-                  value={stock}
+                  name="carbon"
+                  value={carbon}
                   onChange={onChange}
                 />
               </div>
+              
             </div>
             <div className="row">
               <div className="mb-3 col">
@@ -166,6 +169,20 @@ const UpdateProduct = () => {
                 />
               </div>
             </div>
+            <div className="mb-3 col">
+                <label htmlFor="stock_field" className="form-label">
+                  {" "}
+                  Stock{" "}
+                </label>
+                <input
+                  type="number"
+                  id="stock_field"
+                  className="form-control"
+                  name="stock"
+                  value={stock}
+                  onChange={onChange}
+                />
+              </div>
             <button
               type="submit"
               className="btn w-100 py-2"

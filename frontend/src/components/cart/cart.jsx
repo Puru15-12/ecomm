@@ -31,6 +31,7 @@ const Cart = () => {
       product: item?.product,
       name: item?.name,
       price: item?.price,
+      carbon: item?.carbon,
       image: item?.image,
       stock: item?.stock,
       quantity: newQty,
@@ -144,6 +145,25 @@ const Cart = () => {
                   </span>
                 </p>
                 <hr />
+                <p>
+                  Total Carbon Footprint:{" "}
+                  <span className="order-summary-values" style={{ color: 'red' }}>
+                    {cartItems
+                      ?.reduce(
+                        (acc, item) => acc + item?.quantity * item.carbon,
+                        0
+                      )
+                      .toFixed(2)}
+                  </span>
+                </p>
+                <p>
+                  <span className="order-summary-values" style={{ color: 'green' }}>
+                    🎉Hurray! You have saved plenty of trees🌳🌳
+                  </span>
+                </p>
+
+
+
                 <button
                   id="checkout_btn"
                   className="btn btn-primary w-100"

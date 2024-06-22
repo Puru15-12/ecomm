@@ -12,6 +12,11 @@ const productSchema = new mongoose.Schema(
       required: [true, "Please enter product price"],
       maxLength: [5, "Product price cannot exceed 5 digits"],
     },
+    carbon: {
+      type: Number,
+      required: [true, "Please enter Carbon Footprint"],
+      maxLength: [5, "Carbon Footprint cannot exceed 5 digits"],
+    },
     description: {
       type: String,
       required: [true, "Please enter product description"],
@@ -40,6 +45,10 @@ const productSchema = new mongoose.Schema(
           "Electronics",
           "Cameras",
           "Laptops",
+          "Kitchen & Dining",
+          "Sports & Outdoors",
+          "Personal Care",
+          "Stationery",
           "Accessories",
           "Headphones",
           "Food",
@@ -83,7 +92,7 @@ const productSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: false,
     },
   
   },

@@ -15,12 +15,13 @@ const NewProduct = () => {
     name: "",
     description: "",
     price: "",
+    carbon: "",
     category: "",
     stock: "",
     seller: "",
   });
 
-  const { name, description, price, category, stock, seller } = product;
+  const { name, description, price, carbon, category, stock, seller } = product;
 
   const [createProduct, { isLoading, error, isSuccess }] =
     useCreateProductMutation();
@@ -98,19 +99,20 @@ const NewProduct = () => {
               </div>
 
               <div className="mb-3 col">
-                <label htmlFor="stock_field" className="form-label">
+                <label htmlFor="carbon_field" className="form-label">
                   {" "}
-                  Stock{" "}
+                  Carbon Footprint{" "}
                 </label>
                 <input
-                  type="number"
-                  id="stock_field"
+                  type="text"
+                  id="carbon_field"
                   className="form-control"
-                  name="stock"
-                  value={stock}
+                  name="carbon"
+                  value={carbon}
                   onChange={onChange}
                 />
               </div>
+
             </div>
             <div className="row">
               <div className="mb-3 col">
@@ -147,6 +149,20 @@ const NewProduct = () => {
                 />
               </div>
             </div>
+            <div className="mb-3 col">
+                <label htmlFor="stock_field" className="form-label">
+                  {" "}
+                  Stock{" "}
+                </label>
+                <input
+                  type="number"
+                  id="stock_field"
+                  className="form-control"
+                  name="stock"
+                  value={stock}
+                  onChange={onChange}
+                />
+              </div>
             <button
               type="submit"
               className="btn w-100 py-2"

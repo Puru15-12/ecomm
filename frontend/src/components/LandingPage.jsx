@@ -26,6 +26,7 @@ const LandingPage = () => {
                 <h1>Welcome to Our Eco-Friendly Store</h1>
                 <p>Discover a range of eco-friendly products that help reduce your environmental footprint.</p>
                 <p>Our mission is to provide sustainable options for everyday needs while promoting a healthier planet.</p>
+                
                 <div style={imageContainerStyle}>
                     <img src="../micheile-henderson-wwTvwS9vKZs-unsplash.jpg" alt="Eco-Friendly Products" style={imageStyle}  />
                     <img src="../danist-soh-n-3Pn7Ybe-s-unsplash.jpg" alt="Sustainable Living" style={imageStyle} />
